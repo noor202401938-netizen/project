@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "doc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noor202401938-netizen/project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/noor202401938-netizen/project/issues"
+  },
+  "homepage": "https://github.com/noor202401938-netizen/project#readme",
+  "dependencies": {
+    "docx": "^9.6.1"
+  }
+}
