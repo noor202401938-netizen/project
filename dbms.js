@@ -280,7 +280,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("Step 1: Create a New Database")]
       }),
-      createStepList([
+      ...createStepList([
         "Open Microsoft Access",
         'Click "Blank Database"',
         'Name it "UniversityDB"',
@@ -291,7 +291,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("Step 2: Create Table 1 - Students")]
       }),
-      createStepList([
+      ...createStepList([
         'Go to Home tab → Click "Table Design"',
         'Create your first table with these fields:',
         '   • StudentID (AutoNumber) ← This becomes Primary Key',
@@ -307,7 +307,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("Step 3: Create Table 2 - Courses")]
       }),
-      createStepList([
+      ...createStepList([
         'Click "Table Design" again',
         'Create fields:',
         '   • CourseID (AutoNumber) ← Primary Key',
@@ -322,7 +322,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("Step 4: Create Table 3 - Enrollments")]
       }),
-      createStepList([
+      ...createStepList([
         'Click "Table Design" again',
         'Create fields:',
         '   • EnrollmentID (AutoNumber) ← Primary Key',
@@ -337,7 +337,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("Step 5: Create Relationships")]
       }),
-      createStepList([
+      ...createStepList([
         'Go to Database Tools tab',
         'Click "Relationships"',
         'You should see all 3 tables listed',
@@ -443,7 +443,7 @@ const doc = new Document({
         heading: HeadingLevel.HEADING_2,
         children: [new TextRun("How to Run Queries")]
       }),
-      createStepList([
+      ...createStepList([
         'Click Create tab',
         'Click "Query Design"',
         'Click "SQL View" (important!)',
@@ -458,34 +458,34 @@ const doc = new Document({
         children: [new TextRun("Basic SQL Queries")]
       }),
 
-      createQueryBox("Query 1: Select All Students", 
+      ...createQueryBox("Query 1: Select All Students", 
         "SELECT * FROM Students;"),
 
-      createQueryBox("Query 2: Select Specific Columns", 
+      ...createQueryBox("Query 2: Select Specific Columns", 
         "SELECT StudentName, Department FROM Students;"),
 
-      createQueryBox("Query 3: WHERE Condition", 
+      ...createQueryBox("Query 3: WHERE Condition", 
         "SELECT * FROM Students\nWHERE Semester > 4;"),
 
-      createQueryBox("Query 4: ORDER BY (Sorting)", 
+      ...createQueryBox("Query 4: ORDER BY (Sorting)", 
         "SELECT * FROM Students\nORDER BY StudentName ASC;"),
 
-      createQueryBox("Query 5: DISTINCT (Unique Values)", 
+      ...createQueryBox("Query 5: DISTINCT (Unique Values)", 
         "SELECT DISTINCT Department FROM Students;"),
 
-      createQueryBox("Query 6: AND Condition", 
+      ...createQueryBox("Query 6: AND Condition", 
         "SELECT * FROM Students\nWHERE Department='CS' AND Semester=3;"),
 
-      createQueryBox("Query 7: OR Condition", 
+      ...createQueryBox("Query 7: OR Condition", 
         "SELECT * FROM Students\nWHERE Department='SE' OR Department='IT';"),
 
-      createQueryBox("Query 8: LIKE (Pattern Matching)", 
+      ...createQueryBox("Query 8: LIKE (Pattern Matching)", 
         "SELECT * FROM Students\nWHERE StudentName LIKE 'A%';"),
 
-      createQueryBox("Query 9: BETWEEN", 
+      ...createQueryBox("Query 9: BETWEEN", 
         "SELECT * FROM Enrollments\nWHERE Marks BETWEEN 70 AND 90;"),
 
-      createQueryBox("Query 10: Average (AVG)", 
+      ...createQueryBox("Query 10: Average (AVG)", 
         "SELECT AVG(Marks) AS AverageMarks\nFROM Enrollments;"),
 
       new Paragraph({
@@ -493,16 +493,16 @@ const doc = new Document({
         children: [new TextRun("Aggregate Functions (Counting, Adding, etc)")]
       }),
 
-      createQueryBox("Query 11: Count Total Students", 
+      ...createQueryBox("Query 11: Count Total Students", 
         "SELECT COUNT(*) AS TotalStudents\nFROM Students;"),
 
-      createQueryBox("Query 12: Highest Marks", 
+      ...createQueryBox("Query 12: Highest Marks", 
         "SELECT MAX(Marks) AS HighestMarks\nFROM Enrollments;"),
 
-      createQueryBox("Query 13: Lowest Marks", 
+      ...createQueryBox("Query 13: Lowest Marks", 
         "SELECT MIN(Marks) AS LowestMarks\nFROM Enrollments;"),
 
-      createQueryBox("Query 14: Total/Sum Marks", 
+      ...createQueryBox("Query 14: Total/Sum Marks", 
         "SELECT SUM(Marks) AS TotalMarks\nFROM Enrollments;"),
 
       new Paragraph({
@@ -510,7 +510,7 @@ const doc = new Document({
         children: [new TextRun("INSERT Query (Adding Data)")]
       }),
 
-      createQueryBox("Query 15: Insert New Student", 
+      ...createQueryBox("Query 15: Insert New Student", 
         "INSERT INTO Students\n(StudentName, Department, Semester, Email)\nVALUES\n('Kashan', 'CS', 5, 'kashan@gmail.com');"),
 
       new Paragraph({
@@ -518,7 +518,7 @@ const doc = new Document({
         children: [new TextRun("UPDATE Query (Changing Data)")]
       }),
 
-      createQueryBox("Query 16: Update Student", 
+      ...createQueryBox("Query 16: Update Student", 
         "UPDATE Students\nSET Semester = 6\nWHERE StudentID = 1;"),
 
       new Paragraph({
@@ -526,7 +526,7 @@ const doc = new Document({
         children: [new TextRun("DELETE Query (Removing Data)")]
       }),
 
-      createQueryBox("Query 17: Delete Record", 
+      ...createQueryBox("Query 17: Delete Record", 
         "DELETE FROM Students\nWHERE StudentID = 10;"),
 
       new Paragraph({
@@ -534,10 +534,10 @@ const doc = new Document({
         children: [new TextRun("GROUP BY & HAVING")]
       }),
 
-      createQueryBox("Query 18: Count Students Per Department", 
+      ...createQueryBox("Query 18: Count Students Per Department", 
         "SELECT Department, COUNT(*) AS Total\nFROM Students\nGROUP BY Department;"),
 
-      createQueryBox("Query 19: Department with More Than 2 Students", 
+      ...createQueryBox("Query 19: Department with More Than 2 Students", 
         "SELECT Department, COUNT(*) AS Total\nFROM Students\nGROUP BY Department\nHAVING COUNT(*) > 2;"),
 
       // Join Queries
@@ -560,10 +560,10 @@ const doc = new Document({
         children: [new TextRun({ text: "Shows only matching records from both tables", italic: true })]
       }),
 
-      createQueryBox("Query 20: INNER JOIN - Show Student Names with Their Courses and Marks", 
+      ...createQueryBox("Query 20: INNER JOIN - Show Student Names with Their Courses and Marks", 
         "SELECT Students.StudentName, Courses.CourseName, Enrollments.Marks\nFROM (Students\nINNER JOIN Enrollments\nON Students.StudentID = Enrollments.StudentID)\nINNER JOIN Courses\nON Enrollments.CourseID = Courses.CourseID;"),
 
-      createQueryBox("Query 21: INNER JOIN with WHERE", 
+      ...createQueryBox("Query 21: INNER JOIN with WHERE", 
         "SELECT Students.StudentName, Courses.CourseName, Enrollments.Marks\nFROM (Students\nINNER JOIN Enrollments\nON Students.StudentID = Enrollments.StudentID)\nINNER JOIN Courses\nON Enrollments.CourseID = Courses.CourseID\nWHERE Enrollments.Marks > 80;"),
 
       new Paragraph({
@@ -575,7 +575,7 @@ const doc = new Document({
         children: [new TextRun({ text: "Shows all records from left table, even if no match in right table", italic: true })]
       }),
 
-      createQueryBox("Query 22: LEFT JOIN", 
+      ...createQueryBox("Query 22: LEFT JOIN", 
         "SELECT Students.StudentName, Enrollments.Marks\nFROM Students\nLEFT JOIN Enrollments\nON Students.StudentID = Enrollments.StudentID;"),
 
       new Paragraph({
@@ -587,7 +587,7 @@ const doc = new Document({
         children: [new TextRun({ text: "Shows all records from right table, even if no match in left table", italic: true })]
       }),
 
-      createQueryBox("Query 23: RIGHT JOIN", 
+      ...createQueryBox("Query 23: RIGHT JOIN", 
         "SELECT Courses.CourseName, Enrollments.Marks\nFROM Enrollments\nRIGHT JOIN Courses\nON Enrollments.CourseID = Courses.CourseID;"),
 
       new Paragraph({
@@ -599,7 +599,7 @@ const doc = new Document({
         children: [new TextRun({ text: "Combines every record from first table with every record from second table", italic: true })]
       }),
 
-      createQueryBox("Query 24: CROSS JOIN", 
+      ...createQueryBox("Query 24: CROSS JOIN", 
         "SELECT Students.StudentName, Courses.CourseName\nFROM Students, Courses;"),
 
       new Paragraph({
@@ -607,7 +607,7 @@ const doc = new Document({
         children: [new TextRun("JOIN with GROUP BY")]
       }),
 
-      createQueryBox("Query 25: Count Students Per Course", 
+      ...createQueryBox("Query 25: Count Students Per Course", 
         "SELECT Courses.CourseName, COUNT(Enrollments.StudentID) AS TotalStudents\nFROM Courses\nINNER JOIN Enrollments\nON Courses.CourseID = Enrollments.CourseID\nGROUP BY Courses.CourseName;"),
 
       new Paragraph({
@@ -615,7 +615,7 @@ const doc = new Document({
         children: [new TextRun("JOIN with Aggregate Functions")]
       }),
 
-      createQueryBox("Query 26: Average Marks Per Course", 
+      ...createQueryBox("Query 26: Average Marks Per Course", 
         "SELECT Courses.CourseName, AVG(Enrollments.Marks) AS AverageMarks\nFROM Courses\nINNER JOIN Enrollments\nON Courses.CourseID = Enrollments.CourseID\nGROUP BY Courses.CourseName;"),
 
       new Paragraph({
@@ -623,7 +623,7 @@ const doc = new Document({
         children: [new TextRun("Nested Query")]
       }),
 
-      createQueryBox("Query 27: Students with Marks Greater Than 80", 
+      ...createQueryBox("Query 27: Students with Marks Greater Than 80", 
         "SELECT StudentName\nFROM Students\nWHERE StudentID IN\n(\n    SELECT StudentID\n    FROM Enrollments\n    WHERE Marks > 80\n);"),
 
       // Part 7
